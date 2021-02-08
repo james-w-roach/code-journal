@@ -18,8 +18,31 @@
   <header>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div class="header">
+      <h1>New Entry</h1>
+    </div>
+    <div class="form-div" data-view="entry-form">
       <form action="index.html">
+        <div class="row">
+          <div class="column-half">
+            <div class="container">
+              <img src="images/placeholder-image-square.jpg">
+            </div>
+          </div>
+          <div class="column-half">
+            <label class="input" for="url">Image URL</label>
+            <input class="text-input" type="text" id="url" name="url">
+            <label class="input" for="title">Title</label>
+            <input class="text-input" type="text" id="title" name="title">
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <label class="input" for="notes">Notes</label>
+            <textarea class="text-area" id="notes" name="notes"></textarea>
+            <input class="save" type="submit" name="save" id="save" value="SAVE">
+          </div>
+        </div>
       </form>
     </div>
   </main>

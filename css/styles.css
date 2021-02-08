@@ -1,0 +1,45 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-div {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  margin: 0.5rem 1rem;
+}
+
+.input {
+  margin: 0.5rem 1rem;
+}
+
+.text-area {
+  border: solid;
+  margin: 0.5rem 1rem;
+  height: 10rem;
+}
+
+.container {
+  margin-bottom: 1rem;
+}
+
+.save {
+  width: 5rem;
+  height: 1.7rem;
+  align-self: flex-end;
+  margin: 0.5rem 1rem;
+  border: solid black;
+}
+
+.text-input {
+  border: solid;
+  margin: 0.5rem 1rem;
+  height: 3rem;
+}
+
+img {
+  width: 100%;
+}
