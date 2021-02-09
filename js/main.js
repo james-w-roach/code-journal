@@ -19,6 +19,8 @@ var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
 
 function onSubmit(event) {
+  event.preventDefault();
+
   var object = {};
   object.imageURL = $urlInput.value;
   object.entryTitle = $titleInput.value;
