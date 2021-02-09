@@ -2,13 +2,17 @@
 /* exported data */
 
 var $url = document.querySelector('.image');
-var $input = document.querySelector('#url');
+var $urlInput = document.querySelector('#url');
 
 function changeImage(event) {
-  $url.src = $input.value;
+  if ($urlInput.value === '') {
+    $url.src = 'images/placeholder-image-square.jpg';
+  } else {
+    $url.src = $urlInput.value;
+  }
 }
 
-$input.addEventListener('input', changeImage);
+$urlInput.addEventListener('input', changeImage);
 
 var $form = document.querySelector('.form');
 var $titleInput = document.querySelector('#title');
@@ -16,16 +20,25 @@ var $notesInput = document.querySelector('#notes');
 
 function onSubmit(event) {
   var object = {};
-  object['image URL'] = $input.value;
+  object['image URL'] = $urlInput.value;
   object['entry title'] = $titleInput.value;
   object.notes = $notesInput.value;
-  object.nextEntryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(object);
+  if (Boolean(localStorage.getItem('data')) === true) {
+    var previousJSON = localStorage.getItem('data');
+    var data2 = JSON.parse(previousJSON);
+  } else {
+    data2 = data;
+  }
+  object.nextEntryId = data2.nextEntryId;
+  data2.nextEntryId++;
+  data2.entries.unshift(object);
+  var data2JSON = JSON.stringify(data2);
+  localStorage.setItem('data', data2JSON);
   $url.src = 'images/placeholder-image-square.jpg';
   $titleInput.value = '';
   $notesInput.value = '';
-  $input.value = '';
+  $urlInput.value = '';
+  return data;
 }
 
 $form.addEventListener('submit', onSubmit);
