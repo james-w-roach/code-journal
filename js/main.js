@@ -34,3 +34,40 @@ function onSubmit(event) {
 }
 
 $form.addEventListener('submit', onSubmit);
+
+// var $ul = document.querySelector('ul'); //
+
+function entryDOM(object) {
+  var $li = document.createElement('li');
+  $li.className = 'list-item';
+
+  var $column1 = document.createElement('div');
+  $column1.className = 'column-half';
+  $li.appendChild($column1);
+
+  var $container = document.createElement('div');
+  $container.className = 'li-img-container';
+  $column1.appendChild($container);
+
+  var $img = document.createElement('img');
+  $img.setAttribute('src', object.imageURL);
+  $img.className = 'list-img';
+  $container.appendChild($img);
+
+  var $column2 = document.createElement('div');
+  $column2.className = 'column-half';
+  $li.appendChild($column2);
+
+  var $title = document.createElement('h2');
+  $title.className = 'entry-title';
+  $title.textContent = object.entryTitle;
+  $column2.appendChild($title);
+
+  var $notes = document.createElement('p');
+  $notes.textContent = object.entryNotes;
+  $column2.appendChild($notes);
+
+  return $li;
+}
+
+entryDOM();
