@@ -17,50 +17,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Lato&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
   <header>
-    <div class="navbar">
-      <div class="row">
-        <div class="column-full">
-          <h2 class="title">Code Journal</h2>
+    <div class="container">
+      <div class="navbar">
+        <div class="row">
+          <div class="column-full">
+            <h2 class="title">Code Journal</h2>
+          </div>
         </div>
       </div>
     </div>
   </header>
   <main>
-    <div class="form-div" data-view="entry-form">
-      <form action="index.html" class="form">
-        <div class="row">
-          <div class="column-full">
-            <div class="header">
-              <h1>New Entry</h1>
+    <div class="container">
+      <div class="form-div" data-view="entry-form">
+        <form action="index.html" class="form">
+          <div class="row">
+            <div class="column-full">
+              <div class="header">
+                <h1>New Entry</h1>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-half">
-            <div class="image-container">
-              <img class="image" src="images/placeholder-image-square.jpg">
+          <div class="row">
+            <div class="column-half">
+              <div class="image-container">
+                <img class="image" src="images/placeholder-image-square.jpg">
+              </div>
+            </div>
+            <div class="column-half flex">
+              <label class="label" for="url">Image URL</label>
+              <input class="text-input" type="text" id="url" name="url">
+              <label class="label" for="title">Title</label>
+              <input class="text-input" type="text" id="title" name="title">
             </div>
           </div>
-          <div class="column-half flex">
-            <label class="label" for="url">Image URL</label>
-            <input class="text-input" type="text" id="url" name="url">
-            <label class="label" for="title">Title</label>
-            <input class="text-input" type="text" id="title" name="title">
+          <div class="row">
+            <div class="column-full flex">
+              <label class="label" for="notes">Notes</label>
+              <textarea class="text-area" id="notes" name="notes"></textarea>
+              <input class="save" type="submit" name="save" id="save" value="SAVE">
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="column-full flex">
-            <label class="label" for="notes">Notes</label>
-            <textarea class="text-area" id="notes" name="notes"></textarea>
-            <input class="save" type="submit" name="save" id="save" value="SAVE">
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </main>
-  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
