@@ -31,15 +31,17 @@ function onSubmit(event) {
   data.entries.unshift(object);
 
   $form.reset();
+  $urlInput.src = 'images/placeholder-image-square.jpg';
 }
 
 $form.addEventListener('submit', onSubmit);
 
-// var $ul = document.querySelector('ul'); //
+var $ul = document.querySelector('ul');
 
 function entryDOM(object) {
   var $li = document.createElement('li');
   $li.className = 'list-item';
+  $ul.appendChild($li);
 
   var $column1 = document.createElement('div');
   $column1.className = 'column-half';
@@ -70,4 +72,10 @@ function entryDOM(object) {
   return $li;
 }
 
-entryDOM();
+function loadDOM(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    entryDOM(data.entries[i]);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', loadDOM);
