@@ -44,4 +44,8 @@
   .list-item {
     flex-direction: row;
   }
+
+  .title {
+    margin-left: 1.7rem !important;
+  }
 }

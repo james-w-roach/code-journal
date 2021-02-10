@@ -14,10 +14,12 @@ header {
 .navbar {
   color: white;
   font-family: 'Hammersmith One', sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .title {
-  margin: 2rem 1rem;
+  margin: 1rem 1rem;
 }
 
 .form-div {
