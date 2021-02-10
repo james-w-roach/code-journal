@@ -1,0 +1,70 @@
+main {
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
+
+header {
+  background-color: rgb(85, 84, 84);
+}
+
+.navbar {
+  color: white;
+  font-family: 'Hammersmith One', sans-serif;
+}
+
+.title {
+  margin: 2rem 1rem;
+}
+
+.form-div {
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  margin: 0.5rem 0;
+}
+
+.label {
+  margin: 0.5rem 0;
+}
+
+.text-area {
+  border: solid;
+  margin: 0.5rem 0;
+  height: 10rem;
+}
+
+.image-container {
+  margin-bottom: 1rem;
+}
+
+.save {
+  width: 5rem;
+  height: 2rem;
+  align-self: flex-end;
+  margin: 0.5rem 0;
+  border: solid black;
+  box-shadow: 0.2rem 0.2rem black;
+  outline: none;
+}
+
+.save:hover {
+  cursor: pointer;
+  background-color: darkgray;
+}
+
+.text-input {
+  border: solid;
+  margin: 0.5rem 0;
+  height: 3rem;
+}
+
+img {
+  width: 100%;
+}
