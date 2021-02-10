@@ -9,7 +9,7 @@ var data = {
 
 var previousJSON = localStorage.getItem('data');
 
-if (Boolean(previousJSON) === true) {
+if (previousJSON) {
   data = JSON.parse(previousJSON);
 }
 
