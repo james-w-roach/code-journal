@@ -36,6 +36,15 @@ header {
   margin: 0.5rem 0;
 }
 
+.hidden {
+  display: none;
+}
+
+.between {
+  justify-content: space-between;
+  margin: 2rem 1.5rem;
+}
+
 .text-area {
   border: solid;
   margin: 0.5rem 0;
@@ -92,4 +101,18 @@ ul {
 
 .entry-title {
   margin: 1rem 0;
+}
+
+.entries:hover {
+  cursor: pointer;
+}
+
+.button {
+  border: solid black;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+
+.button:hover {
+  cursor: pointer;
 }

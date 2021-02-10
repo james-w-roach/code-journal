@@ -47,14 +47,14 @@ function entryDOM(object) {
   $column1.className = 'column-half';
   $li.appendChild($column1);
 
-  var $container = document.createElement('div');
-  $container.className = 'li-img-container';
-  $column1.appendChild($container);
+  var $imgContainer = document.createElement('div');
+  $imgContainer.className = 'li-img-container';
+  $column1.appendChild($imgContainer);
 
   var $img = document.createElement('img');
   $img.setAttribute('src', object.imageURL);
   $img.className = 'list-img';
-  $container.appendChild($img);
+  $imgContainer.appendChild($img);
 
   var $column2 = document.createElement('div');
   $column2.className = 'column-half';
@@ -79,3 +79,22 @@ function loadDOM(event) {
 }
 
 window.addEventListener('DOMContentLoaded', loadDOM);
+
+var $entriesNav = document.querySelector('.entries');
+var $entriesSection = document.querySelector('.entry-page');
+var $body = document.querySelector('body');
+var $button = document.querySelector('.button');
+
+function onClick(event) {
+  if (event.target === $entriesNav) {
+    $form.className = 'form hidden';
+    $entriesSection.className = 'entry-page';
+  } else if (event.target === $button) {
+    $entriesSection.className = 'entry-page hidden';
+    $form.className += 'form';
+  }
+}
+
+$body.addEventListener('click', onClick);
+
+// var $dataView = event.target.getAttribute('data-view'); //
