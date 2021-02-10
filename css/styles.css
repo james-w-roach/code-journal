@@ -68,3 +68,16 @@ header {
 img {
   width: 100%;
 }
+
+.list-item {
+  display: flex;
+}
+
+.li-img-container {
+  width: 20rem;
+  height: 20rem;
+}
+
+.list-image {
+  object-fit: fill;
+}
