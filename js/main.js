@@ -131,10 +131,14 @@ var lastEntry = data.entries.length - 1;
 
 function onClick2(event) {
   if (event.target.className === 'edit-icon') {
-    data.editing = data.entries[(lastEntry - event.target.getAttribute('data-entry-id'))];
+    var currentObject = data.entries[(lastEntry - event.target.getAttribute('data-entry-id'))];
+    data.editing = currentObject;
     $entriesSection.className = 'entry-page hidden';
     $form.className += 'form';
     data.view = $formDataView;
+    $titleInput.value = currentObject.entryTitle;
+    $notesInput.value = currentObject.entryNotes;
+    $urlInput.value = currentObject.imageURL;
   }
 }
 
