@@ -30,10 +30,10 @@ function onSubmit(event) {
   data.nextEntryId++;
   data.entries.unshift(object);
 
+  $ul.prepend(entryDOM(object));
+
   $form.reset();
   $urlInput.src = 'images/placeholder-image-square.jpg';
-
-  entryDOM(object);
 
   $form.className = 'form hidden';
   $entriesSection.className = 'entry-page';
@@ -46,7 +46,6 @@ var $ul = document.querySelector('ul');
 function entryDOM(object) {
   var $li = document.createElement('li');
   $li.className = 'list-item';
-  $ul.appendChild($li);
 
   var $column1 = document.createElement('div');
   $column1.className = 'column-half';
@@ -79,7 +78,8 @@ function entryDOM(object) {
 
 function loadDOM(event) {
   for (var i = 0; i < data.entries.length; i++) {
-    entryDOM(data.entries[i]);
+    var domTree = entryDOM(data.entries[i]);
+    $ul.appendChild(domTree);
   }
 }
 
