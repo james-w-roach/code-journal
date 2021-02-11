@@ -27,6 +27,7 @@ function onSubmit(event) {
   object.entryNotes = $notesInput.value;
 
   object.nextEntryId = data.nextEntryId;
+  object.dataEntryId = data.nextEntryId - 1;
   data.nextEntryId++;
   data.entries.unshift(object);
 
@@ -46,6 +47,7 @@ var $ul = document.querySelector('ul');
 
 function entryDOM(object) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', (object.nextEntryId - 1));
   $li.className = 'list-item';
 
   var $column1 = document.createElement('div');
