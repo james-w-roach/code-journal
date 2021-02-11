@@ -105,6 +105,7 @@ ul {
 
 .entries:hover {
   cursor: pointer;
+  text-decoration: underline white;
 }
 
 .button {
@@ -115,4 +116,6 @@ ul {
 
 .button:hover {
   cursor: pointer;
+  background-color: rgb(68, 66, 66);
+  color: white;
 }
