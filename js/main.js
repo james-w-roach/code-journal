@@ -37,6 +37,7 @@ function onSubmit(event) {
 
   $form.className = 'form hidden';
   $entriesSection.className = 'entry-page';
+  data.view = 'entries';
 }
 
 $form.addEventListener('submit', onSubmit);
@@ -89,17 +90,28 @@ var $entriesNav = document.querySelector('.entries');
 var $entriesSection = document.querySelector('.entry-page');
 var $body = document.querySelector('body');
 var $button = document.querySelector('.button');
+var $formDiv = document.querySelector('.form-div');
+var $formDataView = $formDiv.getAttribute('data-view');
+var $entriesDataView = $entriesSection.getAttribute('data-view');
 
 function onClick(event) {
   if (event.target === $entriesNav) {
     $form.className = 'form hidden';
     $entriesSection.className = 'entry-page';
+    data.view = $entriesDataView;
   } else if (event.target === $button) {
     $entriesSection.className = 'entry-page hidden';
     $form.className += 'form';
+    data.view = $formDataView;
   }
 }
 
 $body.addEventListener('click', onClick);
 
-// var $dataView = event.target.getAttribute('data-view'); //
+if (data.view === 'entries') {
+  $form.className = 'form hidden';
+  $entriesSection.className = 'entry-page';
+} else {
+  $entriesSection.className = 'entry-page hidden';
+  $form.className += 'form';
+}
