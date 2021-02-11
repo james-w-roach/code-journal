@@ -32,6 +32,11 @@ function onSubmit(event) {
 
   $form.reset();
   $urlInput.src = 'images/placeholder-image-square.jpg';
+
+  entryDOM(object);
+
+  $form.className = 'form hidden';
+  $entriesSection.className = 'entry-page';
 }
 
 $form.addEventListener('submit', onSubmit);
