@@ -33,7 +33,7 @@ function onSubmit(event) {
   $ul.prepend(entryDOM(object));
 
   $form.reset();
-  $urlInput.src = 'images/placeholder-image-square.jpg';
+  $url.src = 'images/placeholder-image-square.jpg';
 
   $form.className = 'form hidden';
   $entriesSection.className = 'entry-page';
