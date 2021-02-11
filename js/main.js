@@ -101,19 +101,17 @@ var $entriesNav = document.querySelector('.entries');
 var $entriesSection = document.querySelector('.entry-page');
 var $body = document.querySelector('body');
 var $button = document.querySelector('.button');
-var $formDiv = document.querySelector('.form-div');
-var $formDataView = $formDiv.getAttribute('data-view');
-var $entriesDataView = $entriesSection.getAttribute('data-view');
 
 function onClick(event) {
   if (event.target === $entriesNav) {
     $form.className = 'form hidden';
     $entriesSection.className = 'entry-page';
-    data.view = $entriesDataView;
+    data.view = 'entries';
   } else if (event.target === $button) {
     $entriesSection.className = 'entry-page hidden';
-    $form.className += 'form';
-    data.view = $formDataView;
+    $form.className = 'form';
+    data.view = 'entry-form';
+    $form.reset();
   }
 }
 
@@ -124,21 +122,21 @@ if (data.view === 'entries') {
   $entriesSection.className = 'entry-page';
 } else {
   $entriesSection.className = 'entry-page hidden';
-  $form.className += 'form';
+  $form.className = 'form';
 }
 
-var lastEntry = data.entries.length - 1;
-
 function onClick2(event) {
+  var dataId = event.target.getAttribute('data-entry-id');
+  var lastEntry = (data.entries.length - 1);
   if (event.target.className === 'edit-icon') {
-    var currentObject = data.entries[(lastEntry - event.target.getAttribute('data-entry-id'))];
+    var currentObject = data.entries[(lastEntry - dataId)];
     data.editing = currentObject;
     $entriesSection.className = 'entry-page hidden';
-    $form.className += 'form';
-    data.view = $formDataView;
-    $titleInput.value = currentObject.entryTitle;
-    $notesInput.value = currentObject.entryNotes;
-    $urlInput.value = currentObject.imageURL;
+    $form.className = 'form';
+    data.view = 'entry-form';
+    $titleInput.value = data.editing.entryTitle;
+    $notesInput.value = data.editing.entryNotes;
+    $urlInput.value = data.editing.imageURL;
   }
 }
 
