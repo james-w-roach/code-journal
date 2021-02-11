@@ -62,7 +62,7 @@ function entryDOM(object) {
   $imgContainer.appendChild($img);
 
   var $column2 = document.createElement('div');
-  $column2.className = 'column-half';
+  $column2.className = 'column-half right';
   $li.appendChild($column2);
 
   var $title = document.createElement('h2');
@@ -73,6 +73,15 @@ function entryDOM(object) {
   var $notes = document.createElement('p');
   $notes.textContent = object.entryNotes;
   $column2.appendChild($notes);
+
+  var $editContainer = document.createElement('div');
+  $editContainer.className = 'edit-container';
+  $column2.appendChild($editContainer);
+
+  var $edit = document.createElement('img');
+  $edit.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png');
+  $edit.className = 'edit-icon';
+  $editContainer.appendChild($edit);
 
   return $li;
 }

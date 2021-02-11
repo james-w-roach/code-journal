@@ -119,3 +119,19 @@ ul {
   background-color: rgb(68, 66, 66);
   color: white;
 }
+
+.right {
+  position: relative;
+}
+
+.edit-container {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.edit-icon {
+  width: 100%;
+}
