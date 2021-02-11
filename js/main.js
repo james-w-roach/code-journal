@@ -126,3 +126,13 @@ if (data.view === 'entries') {
   $entriesSection.className = 'entry-page hidden';
   $form.className += 'form';
 }
+
+function onClick2(event) {
+  if (event.target.className === 'edit-icon') {
+    $entriesSection.className = 'entry-page hidden';
+    $form.className += 'form';
+    data.view = $formDataView;
+  }
+}
+
+$ul.addEventListener('click', onClick2);
