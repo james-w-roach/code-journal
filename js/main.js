@@ -30,7 +30,88 @@ function onSubmit(event) {
   data.nextEntryId++;
   data.entries.unshift(object);
 
+  $ul.prepend(entryDOM(object));
+
   $form.reset();
+  $url.src = 'images/placeholder-image-square.jpg';
+
+  $form.className = 'form hidden';
+  $entriesSection.className = 'entry-page';
+  data.view = 'entries';
 }
 
 $form.addEventListener('submit', onSubmit);
+
+var $ul = document.querySelector('ul');
+
+function entryDOM(object) {
+  var $li = document.createElement('li');
+  $li.className = 'list-item';
+
+  var $column1 = document.createElement('div');
+  $column1.className = 'column-half';
+  $li.appendChild($column1);
+
+  var $imgContainer = document.createElement('div');
+  $imgContainer.className = 'li-img-container';
+  $column1.appendChild($imgContainer);
+
+  var $img = document.createElement('img');
+  $img.setAttribute('src', object.imageURL);
+  $img.className = 'list-img';
+  $imgContainer.appendChild($img);
+
+  var $column2 = document.createElement('div');
+  $column2.className = 'column-half';
+  $li.appendChild($column2);
+
+  var $title = document.createElement('h2');
+  $title.className = 'entry-title';
+  $title.textContent = object.entryTitle;
+  $column2.appendChild($title);
+
+  var $notes = document.createElement('p');
+  $notes.textContent = object.entryNotes;
+  $column2.appendChild($notes);
+
+  return $li;
+}
+
+function loadDOM(event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    var domTree = entryDOM(data.entries[i]);
+    $ul.appendChild(domTree);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', loadDOM);
+
+var $entriesNav = document.querySelector('.entries');
+var $entriesSection = document.querySelector('.entry-page');
+var $body = document.querySelector('body');
+var $button = document.querySelector('.button');
+var $formDiv = document.querySelector('.form-div');
+var $formDataView = $formDiv.getAttribute('data-view');
+var $entriesDataView = $entriesSection.getAttribute('data-view');
+
+function onClick(event) {
+  if (event.target === $entriesNav) {
+    $form.className = 'form hidden';
+    $entriesSection.className = 'entry-page';
+    data.view = $entriesDataView;
+  } else if (event.target === $button) {
+    $entriesSection.className = 'entry-page hidden';
+    $form.className += 'form';
+    data.view = $formDataView;
+  }
+}
+
+$body.addEventListener('click', onClick);
+
+if (data.view === 'entries') {
+  $form.className = 'form hidden';
+  $entriesSection.className = 'entry-page';
+} else {
+  $entriesSection.className = 'entry-page hidden';
+  $form.className += 'form';
+}

@@ -14,10 +14,12 @@ header {
 .navbar {
   color: white;
   font-family: 'Hammersmith One', sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .title {
-  margin: 2rem 1rem;
+  margin: 1rem 1rem;
 }
 
 .form-div {
@@ -32,6 +34,15 @@ header {
 
 .label {
   margin: 0.5rem 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.between {
+  justify-content: space-between;
+  margin: 2rem 1.5rem;
 }
 
 .text-area {
@@ -67,4 +78,44 @@ header {
 
 img {
   width: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2rem 1rem;
+}
+
+.li-img-container {
+  height: 30vh;
+}
+
+.list-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.entry-title {
+  margin: 1rem 0;
+}
+
+.entries:hover {
+  cursor: pointer;
+  text-decoration: underline white;
+}
+
+.button {
+  border: solid black;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgb(68, 66, 66);
+  color: white;
 }
