@@ -47,7 +47,6 @@ var $ul = document.querySelector('ul');
 
 function entryDOM(object) {
   var $li = document.createElement('li');
-  $li.setAttribute('data-entry-id', (object.nextEntryId - 1));
   $li.className = 'list-item';
 
   var $column1 = document.createElement('div');
@@ -82,6 +81,7 @@ function entryDOM(object) {
 
   var $edit = document.createElement('img');
   $edit.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png');
+  $edit.setAttribute('data-entry-id', (object.nextEntryId - 1));
   $edit.className = 'edit-icon';
   $editContainer.appendChild($edit);
 
@@ -127,8 +127,11 @@ if (data.view === 'entries') {
   $form.className += 'form';
 }
 
+var lastEntry = data.entries.length - 1;
+
 function onClick2(event) {
   if (event.target.className === 'edit-icon') {
+    data.editing = data.entries[(lastEntry - event.target.getAttribute('data-entry-id'))];
     $entriesSection.className = 'entry-page hidden';
     $form.className += 'form';
     data.view = $formDataView;
