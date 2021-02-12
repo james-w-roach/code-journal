@@ -135,3 +135,7 @@ ul {
 .edit-icon {
   width: 100%;
 }
+
+.edit-icon:hover {
+  cursor: pointer;
+}
