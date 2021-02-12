@@ -26,12 +26,22 @@ function onSubmit(event) {
   object.entryTitle = $titleInput.value;
   object.entryNotes = $notesInput.value;
 
-  object.nextEntryId = data.nextEntryId;
-  object.dataEntryId = data.nextEntryId - 1;
-  data.nextEntryId++;
-  data.entries.unshift(object);
-
-  $ul.prepend(entryDOM(object));
+  if (data.editing === null) {
+    object.nextEntryId = data.nextEntryId;
+    object.dataEntryId = data.nextEntryId - 1;
+    data.nextEntryId++;
+    data.entries.unshift(object);
+    $ul.prepend(entryDOM(object));
+  } else {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing.dataEntryId === data.entries[i].dataEntryId) {
+        data.editing.entryTitle = object.entryTitle;
+        data.editing.entryNotes = object.entryNotes;
+        data.editing.imageURL = object.imageURL;
+        $ul.replaceChild(entryDOM(data.editing), $ul.children[i]);
+      }
+    }
+  }
 
   $form.reset();
   $url.src = 'images/placeholder-image-square.jpg';
@@ -39,6 +49,7 @@ function onSubmit(event) {
   $form.className = 'form hidden';
   $entriesSection.className = 'entry-page';
   data.view = 'entries';
+  data.editing = null;
 }
 
 $form.addEventListener('submit', onSubmit);
@@ -101,17 +112,20 @@ var $entriesNav = document.querySelector('.entries');
 var $entriesSection = document.querySelector('.entry-page');
 var $body = document.querySelector('body');
 var $button = document.querySelector('.button');
+var $formHeader = document.querySelector('.form-header');
 
 function onClick(event) {
   if (event.target === $entriesNav) {
     $form.className = 'form hidden';
     $entriesSection.className = 'entry-page';
     data.view = 'entries';
+    data.editing = null;
   } else if (event.target === $button) {
     $entriesSection.className = 'entry-page hidden';
     $form.className = 'form';
     data.view = 'entry-form';
     $form.reset();
+    $formHeader.textContent = 'New Entry';
   }
 }
 
@@ -134,6 +148,7 @@ function onClick2(event) {
     $entriesSection.className = 'entry-page hidden';
     $form.className = 'form';
     data.view = 'entry-form';
+    $formHeader.textContent = 'Edit Entry';
     $titleInput.value = data.editing.entryTitle;
     $notesInput.value = data.editing.entryNotes;
     $urlInput.value = data.editing.imageURL;
