@@ -114,7 +114,7 @@ var $body = document.querySelector('body');
 var $button = document.querySelector('.button');
 var $formHeader = document.querySelector('.form-header');
 
-function onClick(event) {
+function changeView(event) {
   if (event.target === $entriesNav) {
     $form.className = 'form hidden';
     $entriesSection.className = 'entry-page';
@@ -129,7 +129,7 @@ function onClick(event) {
   }
 }
 
-$body.addEventListener('click', onClick);
+$body.addEventListener('click', changeView);
 
 if (data.view === 'entries') {
   $form.className = 'form hidden';
@@ -139,7 +139,7 @@ if (data.view === 'entries') {
   $form.className = 'form';
 }
 
-function onClick2(event) {
+function editEntry(event) {
   var dataId = event.target.getAttribute('data-entry-id');
   var lastEntry = (data.entries.length - 1);
   if (event.target.className === 'edit-icon') {
@@ -155,4 +155,4 @@ function onClick2(event) {
   }
 }
 
-$ul.addEventListener('click', onClick2);
+$ul.addEventListener('click', editEntry);
