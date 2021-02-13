@@ -55,10 +55,18 @@ header {
   margin-bottom: 1rem;
 }
 
+.delete-entry:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .save {
   width: 5rem;
   height: 2rem;
-  align-self: flex-end;
   margin: 0.5rem 0;
   border: solid black;
   box-shadow: 0.2rem 0.2rem black;

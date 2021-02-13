@@ -17,6 +17,7 @@ $urlInput.addEventListener('input', changeImage);
 var $form = document.querySelector('.form');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
+var $delete = document.querySelector('#delete');
 
 function onSubmit(event) {
   event.preventDefault();
@@ -50,6 +51,7 @@ function onSubmit(event) {
   $entriesSection.className = 'entry-page';
   data.view = 'entries';
   data.editing = null;
+  $delete.className = 'delete-entry invisible';
 }
 
 $form.addEventListener('submit', onSubmit);
@@ -120,6 +122,7 @@ function changeView(event) {
     $entriesSection.className = 'entry-page';
     data.view = 'entries';
     data.editing = null;
+    $delete.className = 'delete-entry invisible';
   } else if (event.target === $button) {
     $entriesSection.className = 'entry-page hidden';
     $form.className = 'form';
@@ -152,7 +155,16 @@ function editEntry(event) {
     $titleInput.value = data.editing.entryTitle;
     $notesInput.value = data.editing.entryNotes;
     $urlInput.value = data.editing.imageURL;
+    $delete.className = 'delete-entry';
   }
 }
 
 $ul.addEventListener('click', editEntry);
+
+function deleteEntry(event) {
+  if (event.target === document.getElementById('delete')) {
+    console.log('hello');
+  }
+}
+
+$form.addEventListener('click', deleteEntry);

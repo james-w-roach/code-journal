@@ -18,6 +18,11 @@
   flex-direction: column;
 }
 
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .column-full,
 .column-half {
   width: 100%;
