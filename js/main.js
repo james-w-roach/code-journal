@@ -18,6 +18,8 @@ var $form = document.querySelector('.form');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
 var $delete = document.querySelector('#delete');
+var $modal = document.querySelector('#modal');
+var $box = document.querySelector('.box');
 
 function onSubmit(event) {
   event.preventDefault();
@@ -163,8 +165,16 @@ $ul.addEventListener('click', editEntry);
 
 function deleteEntry(event) {
   if (event.target === document.getElementById('delete')) {
-    console.log('hello');
+    $modal.className = 'modal';
   }
 }
 
 $form.addEventListener('click', deleteEntry);
+
+function cancelOrDelete(event) {
+  if (event.target.textContent === 'CANCEL') {
+    $modal.className = 'modal hidden';
+  }
+}
+
+$box.addEventListener('click', cancelOrDelete);
