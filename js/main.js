@@ -158,7 +158,6 @@ function editEntry(event) {
         $titleInput.value = data.editing.entryTitle;
         $notesInput.value = data.editing.entryNotes;
         $urlInput.value = data.editing.imageURL;
-        $url.src = data.editing.imageURL;
         $delete.className = 'delete-entry';
       }
     }
