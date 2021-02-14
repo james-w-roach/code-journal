@@ -1,4 +1,5 @@
-main {
+main,
+textarea {
   font-family: 'Lato', sans-serif;
 }
 
@@ -34,10 +35,6 @@ header {
 
 .label {
   margin: 0.5rem 0;
-}
-
-.hidden {
-  display: none;
 }
 
 .between {
@@ -99,7 +96,7 @@ ul {
 }
 
 .li-img-container {
-  height: 30vh;
+  height: 25rem;
 }
 
 .list-img {
@@ -151,18 +148,18 @@ ul {
 .modal {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: fixed;
   top: 0;
   bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .box {
   width: 30rem;
   height: 15rem;
-  margin-top: 15rem;
   background-color: white;
   padding: 2rem;
   text-align: center;
@@ -181,6 +178,7 @@ ul {
 .modal-button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .cancel {
