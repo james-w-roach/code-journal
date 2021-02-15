@@ -17,6 +17,9 @@ $urlInput.addEventListener('input', changeImage);
 var $form = document.querySelector('.form');
 var $titleInput = document.querySelector('#title');
 var $notesInput = document.querySelector('#notes');
+var $delete = document.querySelector('#delete');
+var $modal = document.querySelector('#modal');
+var $box = document.querySelector('.box');
 
 function onSubmit(event) {
   event.preventDefault();
@@ -50,6 +53,7 @@ function onSubmit(event) {
   $entriesSection.className = 'entry-page';
   data.view = 'entries';
   data.editing = null;
+  $delete.className = 'delete-entry invisible';
 }
 
 $form.addEventListener('submit', onSubmit);
@@ -92,7 +96,7 @@ function entryDOM(object) {
 
   var $edit = document.createElement('img');
   $edit.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Edit_icon_%28the_Noun_Project_30184%29.svg/1024px-Edit_icon_%28the_Noun_Project_30184%29.svg.png');
-  $edit.setAttribute('data-entry-id', (object.nextEntryId - 1));
+  $edit.setAttribute('data-entry-id', object.dataEntryId);
   $edit.className = 'edit-icon';
   $editContainer.appendChild($edit);
 
@@ -120,6 +124,7 @@ function changeView(event) {
     $entriesSection.className = 'entry-page';
     data.view = 'entries';
     data.editing = null;
+    $delete.className = 'delete-entry invisible';
   } else if (event.target === $button) {
     $entriesSection.className = 'entry-page hidden';
     $form.className = 'form';
@@ -140,19 +145,52 @@ if (data.view === 'entries') {
 }
 
 function editEntry(event) {
-  var dataId = event.target.getAttribute('data-entry-id');
-  var lastEntry = (data.entries.length - 1);
+
   if (event.target.className === 'edit-icon') {
-    var currentObject = data.entries[(lastEntry - dataId)];
-    data.editing = currentObject;
-    $entriesSection.className = 'entry-page hidden';
-    $form.className = 'form';
-    data.view = 'entry-form';
-    $formHeader.textContent = 'Edit Entry';
-    $titleInput.value = data.editing.entryTitle;
-    $notesInput.value = data.editing.entryNotes;
-    $urlInput.value = data.editing.imageURL;
+    var dataId = event.target.getAttribute('data-entry-id');
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.entries[i].dataEntryId.toString() === dataId) {
+        data.editing = data.entries[i];
+        $entriesSection.className = 'entry-page hidden';
+        $form.className = 'form';
+        data.view = 'entry-form';
+        $formHeader.textContent = 'Edit Entry';
+        $titleInput.value = data.editing.entryTitle;
+        $notesInput.value = data.editing.entryNotes;
+        $urlInput.value = data.editing.imageURL;
+        $delete.className = 'delete-entry';
+      }
+    }
   }
 }
 
 $ul.addEventListener('click', editEntry);
+
+function showModal(event) {
+  if (event.target === document.getElementById('delete')) {
+    $modal.className = 'modal';
+  }
+}
+
+$form.addEventListener('click', showModal);
+
+function cancelOrDelete(event) {
+  if (event.target.textContent === 'CANCEL') {
+    $modal.className = 'modal hidden';
+  } else if (event.target.textContent === 'DELETE') {
+    for (var i = 0; i < data.entries.length; i++) {
+      if (data.editing.dataEntryId === data.entries[i].dataEntryId) {
+        data.entries.splice(i, 1);
+        $ul.removeChild($ul.childNodes[i]);
+      }
+    }
+    $form.className = 'form hidden';
+    $entriesSection.className = 'entry-page';
+    data.view = 'entries';
+    data.editing = null;
+    $delete.className = 'delete-entry invisible';
+    $modal.className = 'modal hidden';
+  }
+}
+
+$box.addEventListener('click', cancelOrDelete);

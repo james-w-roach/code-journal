@@ -1,4 +1,5 @@
-main {
+main,
+textarea {
   font-family: 'Lato', sans-serif;
 }
 
@@ -36,10 +37,6 @@ header {
   margin: 0.5rem 0;
 }
 
-.hidden {
-  display: none;
-}
-
 .between {
   justify-content: space-between;
   margin: 2rem 1.5rem;
@@ -55,10 +52,18 @@ header {
   margin-bottom: 1rem;
 }
 
+.delete-entry:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
 .save {
   width: 5rem;
   height: 2rem;
-  align-self: flex-end;
   margin: 0.5rem 0;
   border: solid black;
   box-shadow: 0.2rem 0.2rem black;
@@ -91,7 +96,7 @@ ul {
 }
 
 .li-img-container {
-  height: 30vh;
+  height: 25rem;
 }
 
 .list-img {
@@ -138,4 +143,53 @@ ul {
 
 .edit-icon:hover {
   cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.box {
+  width: 30rem;
+  height: 15rem;
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.delete-question {
+  margin-bottom: 3.5rem;
+}
+
+.modal-button {
+  border: solid black;
+  padding: 0.3rem 1rem;
+  outline: none;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.cancel {
+  border: solid black;
+}
+
+.confirm {
+  background-color: rgb(211, 46, 46);
+  color: white;
+}
+
+.confirm:hover {
+  color: red;
 }
